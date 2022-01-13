@@ -1,0 +1,6 @@
+[flake8]
+filename =
+    ./src/**.py
+    ./tests/**.py
+show_source = true
+statistics = true

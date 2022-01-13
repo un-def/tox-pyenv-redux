@@ -1,0 +1,9 @@
+.*
+!.gitignore
+!.editorconfig
+!.flake8
+
+*.py[co]
+*.whl
+
+/dist/

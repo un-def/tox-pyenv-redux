@@ -1,0 +1,70 @@
+[build-system]
+requires = ['poetry-core']
+build-backend = 'poetry.core.masonry.api'
+
+[tool.poetry]
+name = 'tox-pyenv-redux'
+version = '0.1.0.dev0'
+description = 'A tox plugin using pyenv to find Python executables'
+license = 'MIT'
+authors = ['un.def <me@undef.im>']
+readme = 'README.md'
+homepage = 'https://github.com/un-def/tox-pyenv-redux'
+repository = 'https://github.com/un-def/tox-pyenv-redux'
+keywords = ['tox', 'pyenv']
+classifiers = [
+    'Development Status :: 4 - Beta',
+    'Intended Audience :: Developers',
+    'Topic :: Software Development :: Libraries',
+    'Topic :: Software Development :: Testing',
+    'Topic :: Utilities',
+]
+packages = [{include = '_tox_pyenv_redux', from = 'src'}]
+
+[tool.poetry.plugins.tox]
+pyenv-redux = '_tox_pyenv_redux.plugin'
+
+[tool.poetry.dependencies]
+python = '^3.7'
+tox = '*'
+pyenv-inspect = '*'
+
+[tool.isort]
+lines_after_imports = 2
+multi_line_output = 5
+include_trailing_comma = true
+use_parentheses = true
+known_first_party = ['_tox_pyenv_redux']
+known_third_party = ['pyenv_inspect']
+
+[tool.pytest.ini_options]
+minversion = '6.0'
+testpaths = ['tests']
+
+[tool.tox]
+legacy_tox_ini = '''
+[tox]
+envlist =
+    py37
+    py38
+    py39
+    py310
+    flake8
+    isort
+isolated_build = true
+
+[testenv]
+deps =
+    pytest
+commands = pytest {posargs}
+
+[testenv:flake8]
+skip_install = true
+deps = flake8
+commands = flake8 {posargs}
+
+[testenv:isort]
+skip_install = true
+deps = isort
+commands = isort {posargs:. -c}
+'''
