@@ -4,7 +4,7 @@ build-backend = 'poetry.core.masonry.api'
 
 [tool.poetry]
 name = 'tox-pyenv-redux'
-version = '0.1.0.dev0'
+version = '0.1.0'
 description = 'A tox plugin using pyenv to find Python executables'
 license = 'MIT'
 authors = ['un.def <me@undef.im>']
@@ -28,7 +28,7 @@ pyenv-redux = '_tox_pyenv_redux.plugin'
 [tool.poetry.dependencies]
 python = '^3.7'
 tox = '*'
-pyenv-inspect = '*'
+pyenv-inspect = '~0.2'
 
 [tool.isort]
 lines_after_imports = 2
