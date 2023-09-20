@@ -1,34 +1,52 @@
 [build-system]
-requires = ['poetry-core']
-build-backend = 'poetry.core.masonry.api'
+requires = ['setuptools']
+build-backend = 'setuptools.build_meta'
 
-[tool.poetry]
+[project]
 name = 'tox-pyenv-redux'
-version = '0.1.1'
 description = 'A tox Python discovery plugin for pyenv-installed interpreters'
-license = 'MIT'
-authors = ['un.def <me@undef.im>']
 readme = 'README.md'
-homepage = 'https://github.com/un-def/tox-pyenv-redux'
-repository = 'https://github.com/un-def/tox-pyenv-redux'
-keywords = ['tox', 'pyenv']
+license = {file = 'LICENSE'}
+authors = [
+    {name = 'un.def', email = 'me@undef.im'},
+]
 classifiers = [
     'Development Status :: 4 - Beta',
+    'License :: OSI Approved :: MIT License',
     'Intended Audience :: Developers',
     'Framework :: tox',
     'Topic :: Software Development :: Libraries',
     'Topic :: Software Development :: Testing',
     'Topic :: Utilities',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
 ]
-packages = [{include = '_tox_pyenv_redux', from = 'src'}]
+keywords = ['tox', 'pyenv']
+requires-python = '>= 3.8'
+dependencies = [
+    'tox >= 4',
+    'virtualenv-pyenv >= 0.4, < 0.5',
+]
+dynamic = ['version']
 
-[tool.poetry.plugins.tox]
+[project.urls]
+Homepage = 'https://github.com/un-def/tox-pyenv-redux'
+Repository = 'https://github.com/un-def/tox-pyenv-redux.git'
+Changelog = 'https://github.com/un-def/tox-pyenv-redux/releases'
+Issues = 'https://github.com/un-def/tox-pyenv-redux/issues'
+
+[project.entry-points.tox]
 pyenv-redux = '_tox_pyenv_redux.plugin'
 
-[tool.poetry.dependencies]
-python = '^3.7'
-tox = '<4'
-pyenv-inspect = '^0.2'
+[tool.setuptools.dynamic]
+version = {attr = '_tox_pyenv_redux.__version__'}
+
+[tool.setuptools]
+zip-safe = true
+include-package-data = false
 
 [tool.isort]
 lines_after_imports = 2
