@@ -53,5 +53,32 @@ lines_after_imports = 2
 multi_line_output = 5
 include_trailing_comma = true
 use_parentheses = true
-known_first_party = ['_tox_pyenv_redux']
-known_third_party = ['tox', 'pyenv_inspect']
+
+[tool.pytest.ini_options]
+testpaths = ['tests']
+
+[tool.tox]
+legacy_tox_ini = '''
+[tox]
+env_list =
+    py38
+    py39
+    py310
+    py311
+    flake8
+    isort
+
+[testenv]
+deps = pytest
+commands = pytest {posargs}
+
+[testenv:flake8]
+skip_install = true
+deps = flake8
+commands = flake8 {posargs}
+
+[testenv:isort]
+skip_install = true
+deps = isort
+commands = isort {posargs:. -c}
+'''

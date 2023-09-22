@@ -7,3 +7,4 @@
 *.whl
 
 /dist/
+*.egg-info
