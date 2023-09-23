@@ -19,7 +19,7 @@ The plugin is enabled by default and configured to use the default discovery [op
 
 * One of the [operation modes][virtualenv-pyenv-docs-operation-mode] (e.g., `fallback`) to use the specific operation mode. `pyenv_discovery = fallback` is equivalent to `export VIRTUALENV_DISCOVERY=pyenv-fallback`.
 * `default` to use the default operation mode. This is the default value. `pyenv_discovery = default` (or no setting) is equivalent to `export VIRTUALENV_DISCOVERY=pyenv`.
-* `off` to disable the plugin. The plugin will not touch the `VIRTUALENV_DISCOVERY` environment variable, but the [virtualenv-pyenv][virtualenv-pyenv] discovery can still be in effect if the variable is already set to `pyenv` or `pyenv-{mode}`.
+* `off` to disable the plugin. The plugin will not touch the `VIRTUALENV_DISCOVERY` environment variable, but the [virtualenv-pyenv][virtualenv-pyenv] discovery can still be in effect if virtualenv is already configured to use it (via the `VIRTUALENV_DISCOVERY` environment variable or the `discovery` config setting).
 
 ## Examples
 
