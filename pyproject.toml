@@ -28,7 +28,7 @@ keywords = ['tox', 'pyenv']
 requires-python = '>= 3.8'
 dependencies = [
     'tox >= 4',
-    'virtualenv-pyenv >= 0.4, < 0.5',
+    'virtualenv-pyenv >= 0.5, < 0.6',
 ]
 dynamic = ['version']
 
