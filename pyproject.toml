@@ -8,7 +8,7 @@ description = 'A tox Python discovery plugin for pyenv-installed interpreters'
 readme = 'README.md'
 license = {text = 'MIT'}
 authors = [
-    {name = 'un.def', email = 'me@undef.im'},
+    {name = 'Dmitry Meyer', email = 'me@undef.im'},
 ]
 classifiers = [
     'Development Status :: 4 - Beta',
