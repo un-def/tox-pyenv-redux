@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import subprocess
+import sys
 from typing import TYPE_CHECKING
 
 import pytest
@@ -37,7 +38,7 @@ def _write_config(
 
 def _run_tox(config_path: pathlib.Path, *, fail: bool = False) -> str:
     process = subprocess.run(
-        ['python', '-m', 'tox', '-c', config_path, '-qq', 'run'],
+        [sys.executable, '-m', 'tox', '-c', config_path, '-qq', 'run'],
         stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
     )
     if fail:
