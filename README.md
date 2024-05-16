@@ -1,5 +1,11 @@
 # tox-pyenv-redux
 
+![GitHub License](https://img.shields.io/github/license/un-def/tox-pyenv-redux?style=flat-square)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/tox-pyenv-redux?style=flat-square)
+![PyPI - Version](https://img.shields.io/pypi/v/tox-pyenv-redux?style=flat-square)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/tox-pyenv-redux?style=flat-square)
+![GitHub Repo stars](https://img.shields.io/github/stars/un-def/tox-pyenv-redux?style=flat-square)
+
 A [tox][tox] Python discovery plugin for [pyenv][pyenv]–installed interpreters
 
 ## Compatibility
