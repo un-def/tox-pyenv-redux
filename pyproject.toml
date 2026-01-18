@@ -6,30 +6,30 @@ build-backend = 'setuptools.build_meta'
 name = 'tox-pyenv-redux'
 description = 'A tox Python discovery plugin for pyenv-installed interpreters'
 readme = 'README.md'
-license = {text = 'MIT'}
+license = 'MIT'
+license-files = ['LICENSE']
 authors = [
     {name = 'Dmitry Meyer', email = 'me@undef.im'},
 ]
 classifiers = [
     'Development Status :: 4 - Beta',
-    'License :: OSI Approved :: MIT License',
     'Intended Audience :: Developers',
     'Framework :: tox',
     'Topic :: Software Development :: Libraries',
     'Topic :: Software Development :: Testing',
     'Topic :: Utilities',
     'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.8',
-    'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
     'Programming Language :: Python :: 3.12',
+    'Programming Language :: Python :: 3.13',
+    'Programming Language :: Python :: 3.14',
 ]
 keywords = ['tox', 'pyenv']
-requires-python = '>= 3.8'
+requires-python = '>= 3.10'
 dependencies = [
     'tox >= 4',
-    'virtualenv-pyenv >= 0.5, < 0.6',
+    'virtualenv-pyenv >= 0.6, < 0.7',
 ]
 dynamic = ['version']
 
@@ -42,11 +42,23 @@ Issues = 'https://github.com/un-def/tox-pyenv-redux/issues'
 [project.entry-points.tox]
 pyenv-redux = '_tox_pyenv_redux.plugin'
 
+[dependency-groups]
+lint = [
+    'flake8',
+    'isort',
+]
+test = [
+    'pytest >= 9',
+]
+dev = [
+    {include-group = 'lint'},
+    {include-group = 'test'},
+]
+
 [tool.setuptools.dynamic]
 version = {attr = '_tox_pyenv_redux.__version__'}
 
 [tool.setuptools]
-zip-safe = true
 include-package-data = false
 
 [tool.isort]
@@ -55,18 +67,19 @@ multi_line_output = 5
 include_trailing_comma = true
 use_parentheses = true
 
-[tool.pytest.ini_options]
+[tool.pytest]
+minversion = '9.0'
 testpaths = ['tests']
 
 [tool.tox]
 legacy_tox_ini = '''
 [tox]
 env_list =
-    py38
-    py39
     py310
     py311
     py312
+    py313
+    py314
     flake8
     isort
 
