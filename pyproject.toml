@@ -29,7 +29,7 @@ keywords = ['tox', 'pyenv']
 requires-python = '>= 3.10'
 dependencies = [
     'tox >= 4',
-    'virtualenv-pyenv >= 0.6, < 0.7',
+    'virtualenv-pyenv >= 0.7, < 0.8',
 ]
 dynamic = ['version']
 
@@ -57,9 +57,6 @@ dev = [
 
 [tool.setuptools.dynamic]
 version = {attr = '_tox_pyenv_redux.__version__'}
-
-[tool.setuptools]
-include-package-data = false
 
 [tool.isort]
 lines_after_imports = 2
