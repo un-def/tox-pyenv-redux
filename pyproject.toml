@@ -69,28 +69,22 @@ minversion = '9.0'
 testpaths = ['tests']
 
 [tool.tox]
-legacy_tox_ini = '''
-[tox]
-env_list =
-    py310
-    py311
-    py312
-    py313
-    py314
-    flake8
-    isort
+env_list = [
+    { product = [{ prefix = "py3", start = 10, stop = 14 }] },
+    "flake8",
+    "isort",
+]
 
-[testenv]
-deps = pytest
-commands = pytest {posargs}
+[tool.tox.env_run_base]
+deps = ["pytest"]
+commands = [["pytest", { replace = "posargs", extend = true }]]
 
-[testenv:flake8]
+[tool.tox.env.flake8]
 skip_install = true
-deps = flake8
-commands = flake8 {posargs}
+deps = ["flake8"]
+commands = [["flake8", { replace = "posargs", extend = true }]]
 
-[testenv:isort]
+[tool.tox.env.isort]
 skip_install = true
-deps = isort
-commands = isort {posargs:. -c}
-'''
+deps = ["isort"]
+commands = [["isort", { replace = "posargs", default = [".", "-c"], extend = true }]]
